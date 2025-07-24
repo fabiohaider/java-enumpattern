@@ -28,6 +28,7 @@ public enum Strategy {
         var x = 10;
         var y = 5;
 
-        Arrays.stream(Strategy.values()).forEach(strategy -> System.out.printf("%d %s %d = %d%n", x, strategy.name(), y, strategy.apply(x, y)));
+        Arrays.stream(Strategy.values())
+                .forEach(strategy -> System.out.printf("%d %s %d = %d%n", x, strategy.name(), y, strategy.apply(x, y)));
     }
 }

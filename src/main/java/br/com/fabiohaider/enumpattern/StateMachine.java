@@ -1,5 +1,7 @@
 package br.com.fabiohaider.enumpattern;
 
+import java.util.stream.Stream;
+
 public enum StateMachine {
     RED,
     GREEN,
@@ -22,10 +24,13 @@ public enum StateMachine {
     }
 
     public static void main(String[] args) {
-        StateMachine light = RED;
-        for (int i = 0; i < 6; i++) {
-            System.out.println("Light: " + light + ", Action: " + light.action());
-            light = light.next();
-        }
+        // Número de ciclos como argumento (default 6)
+        int cycles = (args.length > 0) ? Integer.parseInt(args[0]) : 6;
+
+        Stream.iterate(RED, StateMachine::next)
+                .limit(cycles)
+                .forEach(light ->
+                        System.out.printf("Light: %s, Action: %s%n", light, light.action())
+                );
     }
 }
