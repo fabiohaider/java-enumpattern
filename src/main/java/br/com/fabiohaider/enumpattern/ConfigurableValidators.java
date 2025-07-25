@@ -3,25 +3,25 @@ package br.com.fabiohaider.enumpattern;
 import java.util.function.Predicate;
 
 public enum ConfigurableValidators {
-    IS_NUMERIC(input -> input != null && input.matches("\\d+")),
+    IS_NUMERO(input -> input != null && input.matches("\\d+")),
     IS_EMAIL(input -> input != null && input.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$")),
-    IS_NOT_EMPTY(input -> input != null && !input.trim().isEmpty());
+    IS_NAO_VAZIO(input -> input != null && !input.trim().isEmpty());
 
-    private final Predicate<String> validationFunction;
+    private final Predicate<String> funcaoDeValidacao;
 
-    ConfigurableValidators(Predicate<String> validationFunction) {
-        this.validationFunction = validationFunction;
+    ConfigurableValidators(Predicate<String> funcaoDeValidacao) {
+        this.funcaoDeValidacao = funcaoDeValidacao;
     }
 
-    public boolean validate(String input) {
-        return validationFunction.test(input);
+    public boolean validar(String entrada) {
+        return funcaoDeValidacao.test(entrada);
     }
 
     public static void main(String[] args) {
-        String testInput = "user@example.com";
-        boolean isEmailValid = ConfigurableValidators.IS_EMAIL.validate(testInput);
-        System.out.println("Is valid email? " + isEmailValid);
+        String testeEntrada = "user@example.com";
+        boolean isEmailValido = ConfigurableValidators.IS_EMAIL.validar(testeEntrada);
+        System.out.println("e-Mail é Válido ? " + isEmailValido);
 
-        System.out.println("Null test: " + ConfigurableValidators.IS_NOT_EMPTY.validate(null));
+        System.out.println("Teste Null: " + ConfigurableValidators.IS_NAO_VAZIO.validar(null));
     }
 }

@@ -3,34 +3,33 @@ package br.com.fabiohaider.enumpattern;
 import java.util.stream.Stream;
 
 public enum StateMachine {
-    RED,
-    GREEN,
-    YELLOW;
+    VERMELHO,
+    VERDE,
+    AMARELO;
 
-    public StateMachine next() {
+    public StateMachine proximo() {
         return switch (this) {
-            case RED -> GREEN;
-            case GREEN -> YELLOW;
-            case YELLOW -> RED;
+            case VERMELHO -> VERDE;
+            case VERDE -> AMARELO;
+            case AMARELO -> VERMELHO;
         };
     }
 
-    public String action() {
+    public String acao() {
         return switch (this) {
-            case RED -> "Stop";
-            case GREEN -> "Go";
-            case YELLOW -> "Caution";
+            case VERMELHO -> "Parar";
+            case VERDE -> "Avançar";
+            case AMARELO -> "Cuidado";
         };
     }
 
     public static void main(String[] args) {
-        // Número de ciclos como argumento (default 6)
-        int cycles = (args.length > 0) ? Integer.parseInt(args[0]) : 6;
+        int fases = (args.length > 0) ? Integer.parseInt(args[0]) : 6;
 
-        Stream.iterate(RED, StateMachine::next)
-                .limit(cycles)
+        Stream.iterate(VERMELHO, StateMachine::proximo)
+                .limit(fases)
                 .forEach(light ->
-                        System.out.printf("Light: %s, Action: %s%n", light, light.action())
+                        System.out.printf("Light: %s, Action: %s%n", light, light.acao())
                 );
     }
 }

@@ -17,6 +17,13 @@ O projeto está organizado em pacotes que contêm diferentes exemplos de padrõe
     *   `Factory.java`
     *   `StateMachine.java`
     *   `Strategy.java`
+    *   `Singleton.java`
+    *   `DecisionTable.java`
+    *   `BidirectionalConversion.java`
+    *   `StatusPhase.java`
+    *   `AbstractMethod.java`
+    *   `PropertyMapping.java`
+    *   `DomainSpecificLogic.java`
 
 ## Exemplos de Padrões de Enum
 
@@ -28,7 +35,7 @@ Este exemplo ilustra o **Padrão Command** utilizando `enums`. Cada instância d
 
 ### `ConfigurableValidators.java`
 
-Demonstra como usar `enums` para criar **validadores configuráveis**. Cada membro do `enum` é associado a uma `Predicate<String>`, permitindo a definição de regras de validação reutilizáveis e expressivas (ex: `IS_NUMERIC`, `IS_EMAIL`, `IS_NOT_EMPTY`).
+Demonstra como usar `enums` para criar **Configurable Validators**. Cada membro do `enum` é associado a uma `Predicate<String>`, permitindo a definição de regras de validação reutilizáveis e expressivas (ex: `IS_NUMERIC`, `IS_EMAIL`, `IS_NOT_EMPTY`).
 
 ### `Factory.java`
 
@@ -36,11 +43,41 @@ Implementa o **Padrão Factory Method** com `enums`. Cada membro do `enum` atua 
 
 ### `StateMachine.java`
 
-Este exemplo demonstra a implementação de uma **Máquina de Estados** simples usando `enums` e a nova `switch expression` do Java 21. Cada membro do `enum` representa um estado (RED, GREEN, YELLOW) e define as transições para o próximo estado (`next()`) e as ações associadas a cada estado (`action()`). Isso oferece uma maneira concisa e segura de tipo para modelar fluxos de estado.
+Este exemplo demonstra a implementação de uma **State Machine** simples usando `enums` e a nova `switch expression` do Java 21. Cada membro do `enum` representa um estado (RED, GREEN, YELLOW) e define as transições para o próximo estado (`next()`) e as ações associadas a cada estado (`action()`). Isso oferece uma maneira concisa e segura de tipo para modelar fluxos de estado.
 
 ### `Strategy.java`
 
 Este exemplo implementa o **Padrão Strategy** utilizando `enums` e interfaces funcionais (`IntBinaryOperator`). Cada membro do `enum` representa uma estratégia de operação matemática (ADD, SUBTRACT, MULTIPLY, DIVIDE) e encapsula a lógica de execução. Isso permite que o algoritmo seja selecionado em tempo de execução, promovendo a flexibilidade e a extensibilidade. O exemplo também demonstra o uso de `var` para inferência de tipo e `Stream API` para processamento conciso.
+
+### `Singleton.java`
+
+O **Padrão Singleton** garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a ela. Embora existam várias maneiras de implementar o Singleton em Java, o uso de um `enum` é amplamente considerado a abordagem mais simples, segura e robusta.
+
+### `DecisionTable.java`
+
+Este padrão utiliza `enums` para representar regras ou condições que levam a uma decisão ou ação específica. É uma forma elegante de substituir longas cadeias de `if-else` ou `switch` aninhados, tornando a lógica de decisão mais declarativa e fácil de gerenciar.
+
+### `BidirectionalConversion.java`
+
+O **Padrão Bidirectional Conversion** é fundamental quando os `enums` precisam ser mapeados para e de outras representações de dados, como códigos de banco de dados, strings de API, valores numéricos ou IDs externos. Garante uma conversão segura e consistente entre o `enum` e seu valor correspondente.
+
+### `StatusPhase.java`
+
+O **Padrão Status Phase** é usado para definir os diferentes estados ou fases pelos quais uma entidade pode passar em um processo de negócio. Diferente de uma state machine completa (como `StateMachine.java`), o foco aqui é mais nas propriedades e comportamentos associados a cada estado, e menos nas transições explícitas entre eles.
+
+### `AbstractMethod.java`
+
+**Abstract Method** é um padrão clássico e muito poderoso que permite que cada membro do `enum` tenha uma implementação única para um método abstrato definido no próprio `enum`. Isso é uma forma elegante de alcançar polimorfismo de comportamento de forma concisa e segura de tipo.
+
+
+### `PropertyMapping.java`
+
+O **Property Mapping** é útil quando você precisa associar múltiplos valores ou propriedades a cada membro do `enum`, além do seu nome e ordinal. É comum para representar configurações, códigos de erro com mensagens, ou tipos de dados com metadados.
+
+
+### `DomainSpecificLogic.java`
+
+Expandindo o conceito de `Strategy` e `Command`, o **Domain Specific Logic** foca em encapsular lógica de negócio mais complexa e específica do domínio dentro dos membros do `enum`. Isso pode incluir cálculos, validações encadeadas ou transformações de dados que são inerentemente ligadas ao tipo de `enum`.
 
 
 ## Como Construir e Executar

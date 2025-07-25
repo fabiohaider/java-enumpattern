@@ -1,9 +1,9 @@
 package br.com.fabiohaider.enumpattern;
 
 public enum Command {
-    START(() -> System.out.println("System is starting...")),
-    STOP(() -> System.out.println("System is stopping...")),
-    RESTART(() -> System.out.println("System is restarting..."));
+    INICIAR(() -> System.out.println("O sistema está iniciando ...")),
+    PARAR(() -> System.out.println("O sistema está parando ...")),
+    REINICIAR(() -> System.out.println("O sistema está reiniciando ..."));
 
     private final Runnable executor;
 
@@ -15,7 +15,7 @@ public enum Command {
         executor.run();
     }
 
-    public static Command fromString(String commandStr) {
+    public static Command aPartirDeString(String commandStr) {
         try {
             return Command.valueOf(commandStr.toUpperCase());
         } catch (IllegalArgumentException e) {
@@ -24,7 +24,7 @@ public enum Command {
     }
 
     public static void main(String[] args) {
-        Command cmd = Command.fromString(Command.START.name());
+        Command cmd = Command.aPartirDeString(Command.INICIAR.name());
         cmd.execute();
     }
 }

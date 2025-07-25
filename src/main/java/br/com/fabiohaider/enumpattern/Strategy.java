@@ -4,24 +4,24 @@ import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
 public enum Strategy {
-    ADD(Integer::sum),
-    SUBTRACT((a, b) -> a - b),
-    MULTIPLY((a, b) -> a * b),
-    DIVIDE((a, b) -> {
+    SOMAR(Integer::sum),
+    SUBTRAIR((a, b) -> a - b),
+    MULTIPLICAR((a, b) -> a * b),
+    DIVIDIR((a, b) -> {
         if (b == 0) {
-            throw new IllegalArgumentException("Cannot divide by zero");
+            throw new IllegalArgumentException("Não pode dividir por Zero");
         }
         return a / b;
     });
 
-    private final IntBinaryOperator operator;
+    private final IntBinaryOperator operador;
 
-    Strategy(IntBinaryOperator operator) {
-        this.operator = operator;
+    Strategy(IntBinaryOperator operador) {
+        this.operador = operador;
     }
 
-    public int apply(int a, int b) {
-        return operator.applyAsInt(a, b);
+    public int aplicar(int a, int b) {
+        return operador.applyAsInt(a, b);
     }
 
     public static void main(String[] args) {
@@ -29,6 +29,6 @@ public enum Strategy {
         var y = 5;
 
         Arrays.stream(Strategy.values())
-                .forEach(strategy -> System.out.printf("%d %s %d = %d%n", x, strategy.name(), y, strategy.apply(x, y)));
+                .forEach(strategy -> System.out.printf("%d %s %d = %d%n", x, strategy.name(), y, strategy.aplicar(x, y)));
     }
 }

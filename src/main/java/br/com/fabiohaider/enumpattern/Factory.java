@@ -2,48 +2,48 @@ package br.com.fabiohaider.enumpattern;
 
 import java.util.function.Supplier;
 
-abstract class Shape {
-    public abstract void draw();
+abstract class Forma {
+    public abstract void desenha();
 }
 
-class Circle extends Shape {
+class Circulo extends Forma {
     @Override
-    public void draw() {
-        System.out.println("Drawing a circle");
+    public void desenha() {
+        System.out.println("Desenhando um Círculo");
     }
 }
 
-class Square extends Shape {
+class Quadrado extends Forma {
     @Override
-    public void draw() {
-        System.out.println("Drawing a square");
+    public void desenha() {
+        System.out.println("Desenhando um Quadrado");
     }
 }
 
-class Triangle extends Shape {
+class Triagulo extends Forma {
     @Override
-    public void draw() {
-        System.out.println("Drawing a triangle");
+    public void desenha() {
+        System.out.println("Desenhando um Triangulo");
     }
 }
 
 public enum Factory {
-    CIRCLE(Circle::new),
-    SQUARE(Square::new),
-    TRIANGLE(Triangle::new);
+    CIRCULO(Circulo::new),
+    QUADRADO(Quadrado::new),
+    TRIANGULO(Triagulo::new);
 
-    private final Supplier<Shape> shapeSupplier;
+    private final Supplier<Forma> provedorDeForma;
 
-    Factory(Supplier<Shape> shapeSupplier) {
-        this.shapeSupplier = shapeSupplier;
+    Factory(Supplier<Forma> provedorDeForma) {
+        this.provedorDeForma = provedorDeForma;
     }
 
-    public Shape create() {
-        return shapeSupplier.get();
+    public Forma criar() {
+        return provedorDeForma.get();
     }
 
     public static void main(String[] args) {
-        Shape shape = Factory.SQUARE.create();
-        shape.draw();
+        Forma forma = Factory.QUADRADO.criar();
+        forma.desenha();
     }
 }
