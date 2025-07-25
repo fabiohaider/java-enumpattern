@@ -88,7 +88,15 @@ Para construir o projeto, navegue até o diretório raiz do projeto (`java-enump
 mvn clean install
 ```
 
-Para executar os exemplos individuais, você pode compilar e rodar as classes `main` presentes em cada arquivo de exemplo (ex: `Command.java`, `ConfigurableValidators.java`, `Factory.java`).
+Para acompanhar a cobertura de testes, execute:
+
+```bash
+mvn clean verify
+```
+
+E verifique o arquivo criado em `java-enum-patterns/target/site/index.html`
+
+Para executar os exemplos individuais, você pode compilar e rodar as classes `main` presentes em cada arquivo de exemplo (ex: `Command.java`, `ConfigurableValidators.java`, `Factory.java`... ).
 
 ## Contribuição
 
